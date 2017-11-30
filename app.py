@@ -20,7 +20,8 @@ class File(db.Model):
     title = db.Column(db.String(80))
     created_time = db.Column(db.DateTime)
     category_id = db.Column(db.Integer,db.ForeignKey('category.id'))
-    category = db.relationship('Category',backref='file')
+#    category = db.relationship('Category',uselist=False,backref='file')
+    category = db.relationship('Category',uselist=False)
     content = db.Column(db.Text)
 
     def __init__(self,title,created_time,category,content):
@@ -36,12 +37,13 @@ class File(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(80))
+    file = db.relationship('File')
 
     def __init__(self,name):
         self.name = name
 
-    def __repr__(self):
-        return '<Category %r>' % self.name
+#    def __repr__(self):
+#        return '<Category %r>' % self.name
 
 def insert_data():
     db.create_all()
