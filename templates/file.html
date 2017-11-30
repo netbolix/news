@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-     <div>
+{#     <div>
           <p>title: {{ doc.title }}</p>
           <p>created_time: {{ doc.created_time }}</p>
           <p>content: {{ doc.content }}</p>
+     </div>
+ #}          
+     <div>
+          <p>content: {{ file_item.content }}</p>
+          <p>created_time: {{ file_item.created_time }}</p>
+          <p>category: {{ file_item.category }}</p>
      </div>
 {% endblock %}     
           
